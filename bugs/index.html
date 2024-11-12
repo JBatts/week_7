@@ -1,0 +1,67 @@
+
+<body style="background:darkgreen; color:gold"></body>
+<script>
+    const bugs = [];
+
+    function add() {
+        const bug = document.createElement("div");
+        bug.setAttribute("style", `
+            position:absolute;
+            color: white;
+            left: ${Math.random() * 100}vw;
+            top: ${Math.random() * 100}vh;
+        `);
+        bug.innerHTML = "*"; //SPLAT
+        document.body.appendChild(bug);
+        bugs.push(bug);
+    }
+    function addMany(limit) {
+        for (let i = 0; i < limit; i++) {
+            add();
+        }
+    }
+    addMany(100)
+    function iterate() {
+        bugs.forEach(bug => {
+            let x = parseInt(bug.style.left.split("vw")[0]) + (Math.round(Math.random() * 2) - 1);
+            let y = parseInt(bug.style.top.split("vh")[0]) + (Math.round(Math.random() * 2) - 1);
+            bug.style.left = x + "vw";
+            bug.style.top = y + "vh";
+        }); //enmd forEach
+        setTimeout(iterate, 100);
+    }
+    iterate();
+</script>
+
+<!-- <body></body>
+<script>
+    const bugs = [];
+
+    function add() {
+        const bug = document.createElement("div");
+        bug.setAttribute("style", `
+            position:absolute;
+            color: saddlebrown;
+            left: ${Math.random() * 100}vw;
+            top: ${0}vh;
+        `);
+        bug.innerHTML = "*"; //SPLAT
+        document.body.appendChild(bug);
+        bugs.push(bug);
+    }
+    function addMany(limit) {
+        for (let i = 0; i < limit; i++) {
+            add();
+        }
+    }
+    function iterate() {
+        addMany(10);
+        bugs.forEach(bug => {
+            let y = parseInt(bug.style.top.split("vh")[0]);
+            if (y < 99) { y++; };
+            bug.style.top = y + "vh";
+        }); //enmd forEach
+        setTimeout(iterate, 100);
+    }
+    iterate();
+</script> -->

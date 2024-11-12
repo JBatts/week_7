@@ -1,0 +1,50 @@
+<body>
+    <input id="searchText" placeholder="Enter Search Text">
+    <button id="searchButton">Search</button>
+    <div id="results">?</div>
+</body>
+<script>
+    const data = [
+        { name: "Dandy", kind: "Dog", desc: "The Good Boy" },
+        { name: "Randy", kind: "Cat", desc: "Pretty Kitty" },
+        { name: "Brandy", kind: "Turtle", desc: "Slow and Steady" },
+        { name: "Thor", kind: "God of Thunder", desc: "Marvel Character " },
+        { name: "Lucio", kind: "Support", desc: "Speedy Boy" },
+        { name: "Billie", kind: "Human", desc: "Werido" },
+
+    ];
+
+    function printOne(item) {
+        results.innerHTML += `<div> ${item.name} </div>`
+    }
+
+    function onSearch(e) {
+        results.innerHTML = "";
+        // Short way
+        const filtered = data.filter(item => Object.values(item)
+            .join(" ")
+            .toLowerCase()
+            .includes(searchText.value.toLowerCase())
+        ).forEach(printOne);
+
+        // Same as below (Long way)
+
+        // const st = document.getElementById("searchText")
+        // const needle = st.value.toLowerCase();
+        // const filtered = data.filter(item => {
+        //     const haystack1 = item.name.toLowerCase()
+        //     const haystack2 = item.kind.toLowerCase()
+        //     const haystack3 = item.desc.toLowerCase()
+        //     return haystack1.includes(needle) || haystack2.includes(needle) || haystack3.includes(needle); 
+        // });
+
+        // Same as below (kinda short way)
+
+        // const filtered = data.filter(item => Object.values(item).join(" ").toLowerCase().includes(needle));
+        // filtered.forEach(printOne);
+    };
+
+    // What event do we listen for?
+    // (click?), change?, keyup?, keydown?, keypress? for text input
+    searchText.addEventListener("keyup", onSearch);
+</script>
