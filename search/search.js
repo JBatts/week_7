@@ -21,3 +21,8 @@ console.log(data.filter(v => v === 2)); // What do we get? ("[2, 2, 2]")
 // Based on what we selected (park type),
 // Rather than custom text we typed,
 // Amd we only searched description.
+function findShort(s){
+    return Math.min(...s.split(" ").map (s => s.length));
+}
+
+  console.log(findShort("bitcoin take over the world maybe who knows perhaps"))
