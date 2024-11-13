@@ -13,3 +13,11 @@ function menu(a,b,c) {
 
 menu(...fruit) // Spreads (Works)
 // menu(fruit.join(" ")) // Does Not Spreads (Doesn't Works)
+function abbrevName(name){
+    splitName = name.split(" ");
+    firstI = splitName[0][0].toUpperCase();
+    lastI = splitName[1][0].toUpperCase();
+    return firstI + "." + lastI
+  }
+
+console.log(abbrevName("Jalen Battle"))

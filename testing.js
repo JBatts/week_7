@@ -22,6 +22,12 @@ testData = [
     { inputs: [10, 10], output: 1100 },
 ];
 
+// specific on-liner without runner function
+testData.forEach((t, i) => console.log(i, testMe(...t.inputs) === t.output ? "Pass" : "Fail"));
+// Generic one liner definition of generic runner function
+const runner1 = (fn,ioList)=> ioList.forEach((t,i) => console.log(i, fn(...t.inputs) === t.output ? "Pass" : "Fail"))
+runner1(testMe, testData); // use runner1
+
 function runner(fn, ioList){
     ioList.forEach((test, i) => {
         result = fn(...test.inputs); // ... spread ,
