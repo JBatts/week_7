@@ -41,3 +41,14 @@ function runner(fn, ioList){
 }
 
 runner(testMe, testData)
+
+function solution(number){
+  let i = 0 
+  const divisible = 3 % 3 || 5 % 5
+  if (i < number){
+    i++
+    if(i == divisible){
+      return i
+    }
+  }
+}
